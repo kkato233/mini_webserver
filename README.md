@@ -1,8 +1,18 @@
 # mini_webserver
 現在のディレクトリにある html ファイルを ブラウザに表示するための 小さな WEB サーバー
 
-## 利用方法
-start.bat を 起動すると 現在のディレクトリにある index.html ファイルを ブラウザで表示します。
+## 利用手順
+start.bat を 起動すると カレントディレクトリにある index.html ファイルを `http://localhost:5000/` に表示できます。 簡易的な WEB サーバーとして利用可能です。
+
+動作環境： [.NET Core ](https://dotnet.microsoft.com/download) 3.0 以上
+
+git からソースを clone して アプリを起動します。
+```
+git clone https://github.com/kkato233/mini_webserver.git
+cd mini_webserver
+start.bat
+```
+
 
 ## 応用例
 
@@ -10,14 +20,14 @@ start.bat を 起動すると 現在のディレクトリにある index.html �
 
 github Page で利用する index.html を動作確認するために利用します。
 
-mini_webserver は 現在の github の ディレクトリと同じディレクトリに clone しておきます。
+mini_webserver は 現在の github の ディレクトリと同じ並びのディレクトリに clone しておきます。
 
+作業ディレクトリで
 ```
 ..\mini_webserver\start.bat
 ```
 
 とすると http://localhost:5000/index.html ファイルが表示されます。
-
 
 
 ### 表示できるファイルの種類を増やす
