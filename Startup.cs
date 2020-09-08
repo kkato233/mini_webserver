@@ -42,7 +42,7 @@ namespace mini_webserver
             options.FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory());
             app.UseDefaultFiles(options);
 
-            // 現在のディレクトリをWEBとして表示する
+            // 迴ｾ蝨ｨ縺ｮ繝�繧｣繝ｬ繧ｯ繝医Μ繧淡EB縺ｨ縺励※陦ｨ遉ｺ縺吶ｋ
             // using System.IO;
             // using Microsoft.Extensions.FileProviders;
             app.UseStaticFiles(new StaticFileOptions
