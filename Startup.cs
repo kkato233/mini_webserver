@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.IO;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace mini_webserver
 {
@@ -42,7 +43,13 @@ namespace mini_webserver
             options.FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory());
             app.UseDefaultFiles(options);
 
-            // 現在のディレクトリをWEBとして表示する
+            // using Microsoft.AspNetCore.StaticFiles;
+            var provider = new FileExtensionContentTypeProvider();
+
+            // 險ｱ蜿ｯ縺吶ｋ 諡｡蠑ｵ蟄舌→ 縺昴�ｮ Mime/Type 繧定ｿｽ蜉縺吶ｋ
+            provider.Mappings[".opf"] = "text/html";
+
+            // 迴ｾ蝨ｨ縺ｮ繝�繧｣繝ｬ繧ｯ繝医Μ繧淡EB縺ｨ縺励※陦ｨ遉ｺ縺吶ｋ
             // using System.IO;
             // using Microsoft.Extensions.FileProviders;
             app.UseStaticFiles(new StaticFileOptions
@@ -50,7 +57,8 @@ namespace mini_webserver
                 FileProvider = new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory())),
 
-                RequestPath = ""
+                RequestPath = "",
+                ContentTypeProvider = provider,
             });
         }
     }
