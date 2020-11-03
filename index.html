@@ -93,6 +93,19 @@
 
     </main>
 
+	<main role="main" class="container">
+		<h4>dotnet tool としてインストールする</h4>
+		<pre style="background-color: black; color:white; width: 600px;">
+	dotnet pack
+	dotnet tool install --global --add-source ./nupkg mini_webserver</pre>
+		
+		とすると 次回からは
+		<pre style="background-color: black; color:white; width: 600px;">
+	mini_webserver [先頭ディレクトリ名]		</pre>
+		で web サーバーが起動できます。
+		
+    </main>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

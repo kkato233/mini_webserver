@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <PackAsTool>true</PackAsTool>
+	<ToolCommandName>mini_webserver</ToolCommandName>
+	<PackageOutputPath>./nupkg</PackageOutputPath>
+	<IsPackable>true</IsPackable>
+ 
   </PropertyGroup>
 
 </Project>
