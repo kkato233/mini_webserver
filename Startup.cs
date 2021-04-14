@@ -35,10 +35,23 @@ namespace mini_webserver
 
             app.UseRouting();
 
+            string vpath = Program.Options.VitualPath ?? "";
+            if (vpath.Length > 0 && !vpath.StartsWith("/"))
+            {
+                vpath = "/" + vpath;
+            }
+
+
+            if (vpath.Length > 0)
+            {
+                Console.WriteLine("ContentURL:  http://localhost:5000" + vpath);
+                Console.WriteLine();
+            }
+
             DefaultFilesOptions options = new DefaultFilesOptions();
             options.DefaultFileNames.Clear();
             options.DefaultFileNames.Add("index.html");
-            options.RequestPath = "";
+            options.RequestPath = vpath;
             options.FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory());
             app.UseDefaultFiles(options);
 
@@ -50,7 +63,7 @@ namespace mini_webserver
                 FileProvider = new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory())),
 
-                RequestPath = ""
+                RequestPath = vpath
             });
         }
     }
