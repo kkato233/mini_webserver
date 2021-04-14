@@ -1,36 +1,41 @@
 # mini_webserver
 現在のディレクトリにある html ファイルを ブラウザに表示するための 小さな WEB サーバー
 
-## 利用手順
-start.bat を 起動すると カレントディレクトリにある index.html ファイルを `http://localhost:5000/` に表示できます。 簡易的な WEB サーバーとして利用可能です。
-
-動作環境： [.NET Core ](https://dotnet.microsoft.com/download) 3.0 以上
+## dotnet tool としてインストール
 
 git からソースを clone して アプリを起動します。
 ```
 git clone https://github.com/kkato233/mini_webserver.git
 cd mini_webserver
-start.bat
+dotnet pack
+dotnet tool install --global --add-source ./nupkg mini_webserver
 ```
 
-
-## 応用例
-
-### github Page の 動作確認として
-
-github Page で利用する index.html を動作確認するために利用します。
-
-mini_webserver は 現在の github の ディレクトリと同じ並びのディレクトリに clone しておきます。
-
-作業ディレクトリで
+表示したい html ファイルがあるディレクトリで
 ```
-..\mini_webserver\start.bat
+mini_webserver
+```
+コマンドを実行すると カレントディレクトリにある index.html ファイルを `http://localhost:5000/` に表示できます。 簡易的な WEB サーバーとして利用可能です。
+
+
+## 起動オプション
+
+```
+-v 仮想パス指定
 ```
 
-とすると http://localhost:5000/index.html ファイルが表示されます。
+仮想パスを指定できます。
 
+```
+mini_webserver -v my_virtual_path
+```
+とすると 現在のディレクトリにあるファイルが 
 
-### 表示できるファイルの種類を増やす
+ `http://localhost:5000/my_virtual_path/` 
+
+として表示できるようになります。
+
+## 表示できるファイルの種類を増やす
 
 `StaticFileExtensions` では あらかじめ決まったファイルの拡張子以外のファイルは 404 エラーとなり ファイルの内容が取得できません。
 
